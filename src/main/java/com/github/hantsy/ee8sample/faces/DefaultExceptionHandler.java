@@ -1,6 +1,6 @@
 package com.github.hantsy.ee8sample.faces;
 
-import com.github.hantsy.ee8sample.domain.TaskNotFoundException;
+import com.github.hantsy.ee8sample.service.TaskNotFoundException;
 
 import java.util.Iterator;
 import java.util.logging.Level;

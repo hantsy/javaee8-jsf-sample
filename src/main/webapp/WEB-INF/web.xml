@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-<!--    <context-param>
+    <!--    <context-param>
         <param-name>com.sun.faces.expressionFactory</param-name>
         <param-value>com.sun.el.ExpressionFactoryImpl</param-value>
     </context-param>-->
@@ -38,4 +38,23 @@
         <param-name>javax.faces.DISABLE_FACESSERVLET_TO_XHTML</param-name>
         <param-value>true</param-name>
     </context-param>-->
+    
+    <security-constraint>
+        <display-name>Protected Resources</display-name>
+        <web-resource-collection>
+            <web-resource-name>Task form page</web-resource-name>
+            <url-pattern>/form.xhtml</url-pattern>
+        </web-resource-collection>
+       
+        <auth-constraint>
+            <role-name>ROLE_ADMIN</role-name>
+            <role-name>ROLE_USER</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-role>
+        <role-name>ROLE_ADMIN</role-name>
+    </security-role>
+    <security-role>
+        <role-name>ROLE_USER</role-name>
+    </security-role>
 </web-app>

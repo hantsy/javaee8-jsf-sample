@@ -1,8 +1,8 @@
 package com.github.hantsy.ee8sample.web;
 
 import com.github.hantsy.ee8sample.domain.Task;
-import com.github.hantsy.ee8sample.domain.TaskNotFoundException;
-import com.github.hantsy.ee8sample.domain.TaskRepository;
+import com.github.hantsy.ee8sample.service.TaskNotFoundException;
+import com.github.hantsy.ee8sample.service.TaskService;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class TaskHome implements Serializable {
     private static final Logger log = Logger.getLogger(TaskHome.class.getName());
 
     @Inject
-    private TaskRepository taskRepository;
+    private TaskService taskService;
 
     private List<TaskDetails> todotasks = new ArrayList<>();
 
@@ -64,7 +64,7 @@ public class TaskHome implements Serializable {
 
     private List<TaskDetails> findTasksByStatus(Task.Status status) {
         List<TaskDetails> taskList = new ArrayList<>();
-        List<Task> tasks = taskRepository.findByStatus(status);
+        List<Task> tasks = taskService.findByStatus(status);
 
         tasks.stream().map((task) -> {
             TaskDetails details = new TaskDetails();
@@ -85,13 +85,8 @@ public class TaskHome implements Serializable {
 
         log.log(Level.INFO, "delete task of id@{0}", id);
 
-        Task task = taskRepository.findById(id);
-
-        if (task == null) {
-            throw new TaskNotFoundException(id);
-        }
-
-        taskRepository.deleteById(id);
+        Task task = taskService.findById(id);
+        taskService.deleteById(id);
 
         // retrieve all tasks
         retrieveAllTasks();
@@ -103,15 +98,7 @@ public class TaskHome implements Serializable {
     public void markTaskDoing(Long id) {
         log.log(Level.INFO, "changing task DONG @{0}", id);
 
-        Task task = taskRepository.findById(id);
-
-        if (task == null) {
-            throw new TaskNotFoundException(id);
-        }
-
-        task.setStatus(Task.Status.DOING);
-
-        taskRepository.update(task);
+        taskService.updateStatus(id, Task.Status.DOING);
 
         // retrieve all tasks
         retrieveAllTasks();
@@ -120,15 +107,8 @@ public class TaskHome implements Serializable {
     public void markTaskDone(Long id) {
         log.log(Level.INFO, "changing task DONE @{0}", id);
 
-        Task task = taskRepository.findById(id);
 
-        if (task == null) {
-            throw new TaskNotFoundException(id);
-        }
-
-        task.setStatus(Task.Status.DONE);
-
-        taskRepository.update(task);
+        taskService.updateStatus(id, Task.Status.DONE);
 
         // retrieve all tasks
         retrieveAllTasks();

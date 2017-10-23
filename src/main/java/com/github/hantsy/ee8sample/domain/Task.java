@@ -6,27 +6,30 @@
 package com.github.hantsy.ee8sample.domain;
 
 import static com.github.hantsy.ee8sample.domain.Task.Status.TODO;
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import com.github.hantsy.ee8sample.support.AbstractAuditableEntity;
 import java.util.Comparator;
-import java.util.Objects;
 import java.util.function.Function;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author hantsy
  */
 @Entity
-public class Task implements Serializable {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@EqualsAndHashCode(callSuper = false)
+public class Task extends AbstractAuditableEntity{
 
     private static final long serialVersionUID = 1L;
 
@@ -34,8 +37,9 @@ public class Task implements Serializable {
         TODO, DOING, DONE;
     }
 
-    public static Comparator<Task> COMPARATOR = Comparator
-            .comparing(Task::getName)
+    public static Comparator<Task> DEFAULT_COMPARATOR = Comparator
+            .comparing(Task::getCreatedDate).reversed()
+            .thenComparing(Task::getName)
             .thenComparing(Task::getDescription);
 
     public static Function<Task, String> TO_STRING = t
@@ -46,10 +50,6 @@ public class Task implements Serializable {
             + "\n lastModifiedAt:" + t.getLastModifiedDate()
             + "]";
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     @Column(name = "name")
     private String name;
 
@@ -59,114 +59,5 @@ public class Task implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private Status status = TODO;
-
-    @Column(name = "created_date")
-    private LocalDateTime createdDate;
-
-    @Column(name = "last_modified_date")
-    private LocalDateTime lastModifiedDate;
-
-    @PrePersist
-    public void prePersist() {
-        this.setCreatedDate(LocalDateTime.now());
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        this.setLastModifiedDate(LocalDateTime.now());
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public LocalDateTime getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(LocalDateTime lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.id);
-        hash = 67 * hash + Objects.hashCode(this.name);
-        hash = 67 * hash + Objects.hashCode(this.description);
-        hash = 67 * hash + Objects.hashCode(this.status);
-        hash = 67 * hash + Objects.hashCode(this.createdDate);
-        hash = 67 * hash + Objects.hashCode(this.lastModifiedDate);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Task other = (Task) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (this.status != other.status) {
-            return false;
-        }
-        if (!Objects.equals(this.createdDate, other.createdDate)) {
-            return false;
-        }
-        if (!Objects.equals(this.lastModifiedDate, other.lastModifiedDate)) {
-            return false;
-        }
-        return true;
-    }
 
 }

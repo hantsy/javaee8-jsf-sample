@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                template="/WEB-INF/layout/simple.xhtml">
+    <ui:define name="headIncludes"> 
+        <h:outputStylesheet library="css" name="login.css"></h:outputStylesheet>
+    </ui:define>
+    <ui:define name="wrapper">
+        <div class="container">
+            <form jsf:id="form"  class="form-signin">
+                <h2 class="form-signin-heading">JAVA EE 8 TASKBOARD</h2>
+                <label jsf:for="username" class="sr-only">Username</label>
+                <input class="form-control" jsf:id="username" type="text" placeholder="Username" jsf:value="#{loginBean.username}" />
+                <label jsf:for="password" class="sr-only">Password</label>
+                <input class="form-control" jsf:id="password" type="password"  placeholder="Password" jsf:value="#{loginBean.password}" />
+                <!--            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="rememberMe"> Remember me
+                                </label>
+                            </div>-->
+                <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login" jsf:action="#{loginBean.login}" />
+            </form>
+        </div>
+    </ui:define>
+</ui:composition>
+

@@ -11,6 +11,6 @@ import static javax.faces.annotation.FacesConfig.Version.JSF_2_3;
 	// Activates CDI build-in beans
 	version = JSF_2_3 
 )
-public class ConfigurationBean {
+public class FacesConfigurationBean {
 
 }

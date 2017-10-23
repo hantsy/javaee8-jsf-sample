@@ -26,7 +26,7 @@
 
                         <!-- List group -->
                         <ui:fragment rendered="#{not empty taskHome.todotasks}">
-                            
+
                             <ul id="todotasks" class="list-group">
                                 <ui:repeat var="task" value="#{taskHome.todotasks}">
                                     <li class="list-group-item">
@@ -37,7 +37,7 @@
                                                     <f:param name="id" value="#{task.id}"></f:param>
                                                     <span class="fa fa-file-text-o" aria-hidden="true"></span>
                                                 </h:link> 
-                                                <h:link outcome="/edit.xhtml">
+                                                <h:link outcome="/form.xhtml">
                                                     <f:param name="id" value="#{task.id}"></f:param>
                                                     <span class="fa fa-pencil" aria-hidden="true"></span>
                                                 </h:link>
@@ -53,7 +53,7 @@
                                     </li>
                                 </ui:repeat>
                             </ul>
-                            
+
                         </ui:fragment>
                     </div>
                 </div>

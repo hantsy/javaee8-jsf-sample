@@ -21,18 +21,7 @@
         </h:head>
 
         <h:body>
-            <header>
-                <ui:include src="/WEB-INF/layout/nav.xhtml" />
-            </header>
-
-            <main role="main" class="container">
-                <ui:include src="/WEB-INF/layout/alert.xhtml" />
-                <h:panelGroup layout="block" styleClass="page-header">
-                    <h1><ui:insert name="pageTitle"></ui:insert></h1>
-                </h:panelGroup>
-                <ui:insert name="content"/>
-            </main>
-
+            <ui:insert name="wrapper"/>
             <ui:include src="/WEB-INF/layout/footer.xhtml"/>
             <!-- Optional JavaScript -->
             <!-- jQuery first, then Popper.js, then Bootstrap JS -->

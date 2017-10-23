@@ -5,7 +5,7 @@
  */
 package com.github.hantsy.ee8sample;
 
-import com.github.hantsy.ee8sample.domain.TaskRepository;
+import com.github.hantsy.ee8sample.repository.TaskRepository;
 import com.github.hantsy.ee8sample.domain.Task;
 
 import java.util.logging.Level;

@@ -1,8 +1,7 @@
 package com.github.hantsy.ee8sample.web;
 
 import com.github.hantsy.ee8sample.domain.Task;
-import com.github.hantsy.ee8sample.domain.TaskNotFoundException;
-import com.github.hantsy.ee8sample.domain.TaskRepository;
+import com.github.hantsy.ee8sample.service.TaskService;
 
 import java.io.Serializable;
 
@@ -30,10 +29,10 @@ public class EditTaskAction implements Serializable {
     private static final long serialVersionUID = 1L;
 
     //@Inject
-    private static final  Logger log= Logger.getLogger(EditTaskAction.class.getName());
+    private static final Logger LOG = Logger.getLogger(EditTaskAction.class.getName());
 
     @Inject
-    private TaskRepository taskRepository;
+    private TaskService taskService;
 
     private Long taskId;
 
@@ -55,28 +54,23 @@ public class EditTaskAction implements Serializable {
         this.task = task;
     }
 
-    //@PostConstruct
     public void init() {
-        log.log(Level.INFO, " get task of id @{0}", taskId);
+        LOG.log(Level.INFO, " get task of id @{0}", taskId);
 
-        if (!FacesContext.getCurrentInstance().isPostback()) {
-            if (taskId == null) {
-                task = new Task();
-            } else {
-                task = taskRepository.findById(taskId);
-                if (task == null) {
-                    throw new TaskNotFoundException(taskId);
-                }
-            }
+        if (taskId == null) {
+            task = new Task();
+        } else {
+            task = taskService.findById(taskId);
         }
+
     }
 
     public String save() {
-        log.log(Level.INFO, "saving task@{0}", task);
+        LOG.log(Level.INFO, "saving task@{0}", task);
         if (this.task.getId() == null) {
-            this.task = taskRepository.save(task);
+            this.task = taskService.save(task);
         } else {
-            this.task = taskRepository.update(task);
+            this.task = taskService.update(taskId, task);
         }
         FacesMessage info = new FacesMessage(FacesMessage.SEVERITY_INFO, "Task is saved successfully!", "Task is saved successfully!");
         FacesContext.getCurrentInstance().addMessage(null, info);

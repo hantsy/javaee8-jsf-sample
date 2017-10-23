@@ -1,11 +1,9 @@
 # javaee8-jsf-sample(WIP)
 
 
-## Purpose 
+Java EE 8 and Glassfish v5 had beed released for a few days, I also spend some time to update to the last specificaitons brought by Java EE 8. This sample application will show how to build a traditional MVC application using Java EE 8 new features.
 
-This sample application demonstrates how to use the latest specificaitons brought in Java EE 8 to build a traditional MVC application.
-
-The following specifications are included in this sample:
+The following specifications are used in this sample appliacation:
 
 * JSF 2.3
 * JPA 2.2(and EJB, JTA) for database operations
@@ -16,7 +14,9 @@ The following specifications are included in this sample:
 
 ## What's it?
 
-This sample is a simple taskboard appliation, including the following features:
+You could have embraced some Agile methodology in your projects, such as Scrum, Kanban, TODO list etc.  This sample application can be considered as a simple Kanban like applicaiton, I name it **Taskboard**.
+
+In the initial version, it could includes the following features:
 
 * Display tasks in Swimlan view(split by status)
 * Create and update task(requires authentication)
@@ -24,21 +24,21 @@ This sample is a simple taskboard appliation, including the following features:
 
 ![preview](https://github.com/hantsy/javaee8-jsf-sample/blob/master/preview.png)
 
-There are some variants I'v created to demonstrate varied technology stack.
+I have also created some some variants to demonstrate varied technology stack in the past, you can browse which you are interested in.
 
-* [Spring MVC and Apache Tiles](https://github.com/hantsy/spring4-sandbox/tree/master/mvc-tiles3)
-* [Spring MVC and Freemaker](https://github.com/hantsy/spring4-sandbox/tree/master/mvc-freemarker)
-* [Spring MVC and Thymeleaf](https://github.com/hantsy/spring4-sandbox/tree/master/mvc-thymeleaf)
-* [Spring and JSF](https://github.com/hantsy/spring4-sandbox/tree/master/mvc-jsf2)
-* [Spring MVC for REST API](https://github.com/hantsy/spring4-sandbox/tree/master/mvc-rest)
-* [MVC 1.0](https://github.com/hantsy/ee8-sandbox/tree/master/mvc)(cancelled in Java EE 8)
-* [MVC 1.0 and Facelets Template Engine](https://github.com/hantsy/ee8-sandbox/tree/master/mvc-facelets)
+* [Spring MVC with Apache Tiles and JSP](https://github.com/hantsy/spring4-sandbox/tree/master/mvc-tiles3)
+* [Spring MVC with Freemarker](https://github.com/hantsy/spring4-sandbox/tree/master/mvc-freemarker)
+* [Spring MVC with Thymeleaf](https://github.com/hantsy/spring4-sandbox/tree/master/mvc-thymeleaf)
+* [Spring and JSF 2](https://github.com/hantsy/spring4-sandbox/tree/master/mvc-jsf2)
+* [Spring MVC for RESTful APIs](https://github.com/hantsy/spring4-sandbox/tree/master/mvc-rest)
+* [JSR 371: MVC 1.0](https://github.com/hantsy/ee8-sandbox/tree/master/mvc)(JSR 371 was finally cancelled in Java EE 8)
+* [JSR 371: MVC 1.0 with Facelets Template Engine](https://github.com/hantsy/ee8-sandbox/tree/master/mvc-facelets)
 
-## Run 
+## Build the project 
 
 ### Prerequisites
 
-To experience this appliacation in your local system, make sure you have already installed the following software.
+To try this appliacation in your local system, make sure you have already installed the following software.
 
 * [Oracle Java 8](https://java.oracle.com) 
 * [Apache Maven](https://maven.apache.org)

@@ -1,7 +1,7 @@
 package com.github.hantsy.ee8sample.web;
 
-import com.github.hantsy.ee8sample.domain.TaskNotFoundException;
-import com.github.hantsy.ee8sample.domain.TaskRepository;
+import com.github.hantsy.ee8sample.service.TaskNotFoundException;
+import com.github.hantsy.ee8sample.repository.TaskRepository;
 import com.github.hantsy.ee8sample.domain.Task;
 
 import java.io.Serializable;

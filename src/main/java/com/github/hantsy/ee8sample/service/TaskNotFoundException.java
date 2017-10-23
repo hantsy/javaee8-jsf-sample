@@ -1,4 +1,4 @@
-package com.github.hantsy.ee8sample.domain;
+package com.github.hantsy.ee8sample.service;
 
 public class TaskNotFoundException extends RuntimeException {
 
