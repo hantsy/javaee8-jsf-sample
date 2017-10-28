@@ -1,7 +1,7 @@
 package com.github.hantsy.ee8sample.repository;
 
 import com.github.hantsy.ee8sample.domain.Task;
-import com.github.hantsy.ee8sample.support.AbstractRepository;
+import com.github.hantsy.ee8sample.domain.support.AbstractRepository;
 import java.util.List;
 import java.util.Objects;
 import static java.util.stream.Collectors.toList;

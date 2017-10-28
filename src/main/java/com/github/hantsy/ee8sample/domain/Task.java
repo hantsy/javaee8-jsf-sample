@@ -6,7 +6,7 @@
 package com.github.hantsy.ee8sample.domain;
 
 import static com.github.hantsy.ee8sample.domain.Task.Status.TODO;
-import com.github.hantsy.ee8sample.support.AbstractAuditableEntity;
+import com.github.hantsy.ee8sample.domain.support.AbstractAuditableEntity;
 import java.util.Comparator;
 import java.util.function.Function;
 import javax.persistence.Column;

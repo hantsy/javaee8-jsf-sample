@@ -7,7 +7,7 @@ package com.github.hantsy.ee8sample.security;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
-import javax.security.enterprise.authentication.mechanism.http.FormAuthenticationMechanismDefinition;
+import javax.security.enterprise.authentication.mechanism.http.CustomFormAuthenticationMechanismDefinition;
 import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
 import javax.security.enterprise.identitystore.DatabaseIdentityStoreDefinition;
 import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
@@ -17,7 +17,8 @@ import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
  * @author hantsy
  */
 @DatabaseIdentityStoreDefinition(
-       // dataSourceLookup = "${'java:global/MyDS'}",
+        // use default DataSource
+        // dataSourceLookup = "${'java:global/MyDS'}",
         callerQuery = "#{'select password from caller where name = ?'}",
         groupsQuery = "select group_name from caller_groups where caller_name = ?",
         hashAlgorithm = Pbkdf2PasswordHash.class,
@@ -27,7 +28,7 @@ import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
             "${applicationConfig.dyna}"
         } // just for test / example
 )
-@FormAuthenticationMechanismDefinition(
+@CustomFormAuthenticationMechanismDefinition(
         loginToContinue = @LoginToContinue(
                 loginPage = "/login.xhtml",
                 errorPage = ""

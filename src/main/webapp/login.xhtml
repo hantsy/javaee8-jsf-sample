@@ -11,7 +11,11 @@
     <ui:define name="wrapper">
         <div class="container">
             <form jsf:id="form"  class="form-signin">
-                <h2 class="form-signin-heading">JAVA EE 8 TASKBOARD</h2>
+                <div class="text-center">
+                    <h2 class="form-signin-heading my-2">JAVA EE 8 TASKBOARD</h2>
+                    <h:graphicImage library="images" name="tb.png"/>
+                </div>
+
                 <label jsf:for="username" class="sr-only">Username</label>
                 <input class="form-control" jsf:id="username" type="text" placeholder="Username" jsf:value="#{loginBean.username}" />
                 <label jsf:for="password" class="sr-only">Password</label>

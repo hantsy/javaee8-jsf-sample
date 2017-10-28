@@ -1,4 +1,5 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:h="http://xmlns.jcp.org/jsf/html">
@@ -9,7 +10,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item #{request.requestURI.contains('/tasks.xhtml')?'active':''}">
@@ -22,10 +23,15 @@
                                         <a class="nav-link disabled" href="#">Disabled</a>
                                     </li>-->
                 </ul>
-                <!--            <form class="form-inline mt-2 mt-md-0">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                            </form>-->
+
+                <form jsf:id="login" class="form-inline mt-2 mt-md-0">
+                    <h:panelGroup rendered="#{request.userPrincipal != null}">
+                        <button type="submit" class="btn btn-danger btn-lg my-2 my-sm-0" jsf:action="#{request.session.invalidate()}">Logout</button>
+                    </h:panelGroup>
+                    <h:panelGroup rendered="#{request.userPrincipal == null}">
+                        <button class="btn btn-outline-success btn-lg my-2 my-sm-0" jsf:outcome="/login.xhtml">Login</button>
+                    </h:panelGroup>
+                </form>
             </div>
         </div>
     </nav>

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.github.hantsy.ee8sample.support;
+package com.github.hantsy.ee8sample.domain.support;
 
 import java.time.LocalDateTime;
 import javax.persistence.Column;
