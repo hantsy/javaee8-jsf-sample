@@ -42,6 +42,8 @@ public class LoginBean {
     @Size(min = 5, max = 50, message = "Password must be between 5 and 50 characters")
     private String password;
 
+    private boolean rememberMe = false;
+
     @Inject
     Logger LOG;
 
@@ -54,7 +56,10 @@ public class LoginBean {
                 getRequest(context),
                 getResponse(context),
                 withParams()
-                        .credential(credential));
+                        .credential(credential)
+                        //.newAuthentication(rememberMe)
+                        //.rememberMe(rememberMe)
+        );
 
         LOG.info("authentication result:" + status);
 
@@ -101,6 +106,14 @@ public class LoginBean {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isRememberMe() {
+        return rememberMe;
+    }
+
+    public void setRememberMe(boolean rememberMe) {
+        this.rememberMe = rememberMe;
     }
 
 }

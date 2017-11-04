@@ -24,6 +24,4 @@ public class UserInfo {
 
     private String name;
     private Set<String> roles = new HashSet<>();
-    
-    
 }

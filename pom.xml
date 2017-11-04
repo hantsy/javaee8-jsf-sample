@@ -64,6 +64,12 @@
                 <version>${version.javaee-api}</version>
                 <scope>provided</scope>
             </dependency>
+            
+            <!--            <dependency>
+                <groupId>org.omnifaces</groupId>
+                <artifactId>omnisecurity-cdi-auth-events-undertow</artifactId>
+                <version>10.0.0.Final-u1</version>
+            </dependency>-->
               
             <!-- test-->
             <!-- JBoss Arquillian -->
@@ -77,14 +83,14 @@
             <dependency>
                 <groupId>org.jboss.arquillian.extension</groupId>
                 <artifactId>arquillian-drone-bom</artifactId>
-                <version>2.4.2</version>
+                <version>2.4.3</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.jboss.arquillian.selenium</groupId>
                 <artifactId>selenium-bom</artifactId>
-                <version>3.5.3</version>
+                <version>3.7.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -110,6 +116,12 @@
             <artifactId>lombok</artifactId>
             <version>1.16.8</version>
             <scope>provided</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.omnifaces</groupId>
+            <artifactId>omniutils</artifactId>
+            <version>0.5</version>
         </dependency>
         
         <!-- Now we declare the dependencies needed by the jaxrs-client -->
@@ -144,7 +156,7 @@
         <dependency>
             <groupId>org.jboss.arquillian.graphene</groupId>
             <artifactId>graphene-webdriver</artifactId>
-            <version>2.3.1</version>
+            <version>2.3.2</version>
             <type>pom</type>
             <scope>test</scope>
         </dependency>
