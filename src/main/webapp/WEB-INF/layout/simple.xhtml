@@ -21,7 +21,10 @@
         </h:head>
 
         <h:body>
-            <ui:insert name="wrapper"/>
+            <main role="main" class="container">
+                <ui:include src="/WEB-INF/layout/alert.xhtml" />
+                <ui:insert name="wrapper"/>
+            </main>
             <ui:include src="/WEB-INF/layout/footer.xhtml"/>
             <!-- Optional JavaScript -->
             <!-- jQuery first, then Popper.js, then Bootstrap JS -->

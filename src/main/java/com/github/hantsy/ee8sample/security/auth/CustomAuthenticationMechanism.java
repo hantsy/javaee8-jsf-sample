@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @AutoApplySession // For "Is user already logged-in?"
 @RememberMe(isRememberMeExpression = "httpMessageContext.authParameters.rememberMe", cookieMaxAgeSeconds = 60 * 60 * 24 * 14) // 14 days
-@LoginToContinue(loginPage = "/login.xhtml?continue=true", errorPage = "", useForwardToLogin = false)
+@LoginToContinue(loginPage = "/login.xhtml?continued=true", errorPage = "", useForwardToLogin = false)
 @ApplicationScoped
 public class CustomAuthenticationMechanism implements HttpAuthenticationMechanism {
 

@@ -44,6 +44,8 @@ public class LoginBean {
 
     private boolean rememberMe = false;
 
+    private boolean continued = true;
+
     @Inject
     Logger LOG;
 
@@ -57,8 +59,8 @@ public class LoginBean {
                 getResponse(context),
                 withParams()
                         .credential(credential)
-                        //.newAuthentication(rememberMe)
-                        //.rememberMe(rememberMe)
+                        .newAuthentication(!continued)
+                        .rememberMe(rememberMe)
         );
 
         LOG.info("authentication result:" + status);
@@ -115,5 +117,15 @@ public class LoginBean {
     public void setRememberMe(boolean rememberMe) {
         this.rememberMe = rememberMe;
     }
+
+    public boolean isContinued() {
+        return continued;
+    }
+
+    public void setContinued(boolean continued) {
+        this.continued = continued;
+    }
+    
+    
 
 }

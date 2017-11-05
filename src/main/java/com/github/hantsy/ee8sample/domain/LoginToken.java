@@ -50,8 +50,8 @@ public class LoginToken extends AbstractEntity {
         RESET_PASSWORD
     }
 
-    @Column(length = 32, unique = true)
-    private byte[] tokenHash;
+    @Column(unique = true)
+    private String tokenHash;
 
     @Column
     private LocalDateTime createdDate;

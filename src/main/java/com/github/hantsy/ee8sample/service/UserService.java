@@ -40,7 +40,7 @@ public class UserService {
         User user = users.findByUsername(username).orElseThrow(()-> new InvalidUsernameException(username));
 
         LoginToken loginToken = new LoginToken();
-        loginToken.setTokenHash(digest(rawToken, MESSAGE_DIGEST_ALGORITHM));
+        loginToken.setTokenHash(new String(digest(rawToken, MESSAGE_DIGEST_ALGORITHM)));
         loginToken.setExpiredDate(expiration);
         loginToken.setDescription(description);
         loginToken.setType(tokenType);
@@ -52,7 +52,7 @@ public class UserService {
     }
 
     public void remove(String loginToken) {
-         this.loginTokens.removeByTokenHash(digest(loginToken, MESSAGE_DIGEST_ALGORITHM));
+         this.loginTokens.removeByTokenHash(new String(digest(loginToken, MESSAGE_DIGEST_ALGORITHM)));
     }
 
 }

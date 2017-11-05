@@ -26,7 +26,7 @@ public class LoginTokenRepository extends AbstractRepository<LoginToken, Long> {
         return em;
     }
 
-    public void removeByTokenHash(byte[] tokenHash) {
+    public void removeByTokenHash(String tokenHash) {
         this.em.createNamedQuery("LoginToken.remove")
                 .setParameter("tokenHash", tokenHash)
                 .executeUpdate();
