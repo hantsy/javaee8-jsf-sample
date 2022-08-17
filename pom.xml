@@ -18,7 +18,7 @@
         <!-- cargo plugin -->
         <cargo.container.id>glassfish4x</cargo.container.id>
         <glassfish.home>${basedir}/target/cargo/installs/glassfish</glassfish.home>
-        <cargo.maven.containerUrl>http://download.oracle.com/glassfish/5.0/release/glassfish-5.0.zip</cargo.maven.containerUrl>
+        <cargo.maven.containerUrl>https://download.oracle.com/glassfish/5.0/release/glassfish-5.0.zip</cargo.maven.containerUrl>
         
         <version.javaee-api>8.0</version.javaee-api>
         <version.eclipselink>2.7.0</version.eclipselink>
