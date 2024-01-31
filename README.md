@@ -1,5 +1,6 @@
 # javaee8-jsf-sample(WIP)
 
+> Check the latest [Jakarta EE Faces Example](https://github.com/hantsy/jakartaee-faces-sample) project.
 
 Java EE 8 and Glassfish v5 had beed released for a few days, I also spend some time to update to the last specificaitons brought by Java EE 8. This sample application will show how to build a traditional MVC application using Java EE 8 new features.
 
